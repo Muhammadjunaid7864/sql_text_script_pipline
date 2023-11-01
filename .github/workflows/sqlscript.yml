@@ -23,4 +23,4 @@ jobs:
     steps:
       - name: "Script run"
         run: |
-          sqlcmd -S DESKTOP-B104Q1R\SQLEXPRESS -d testdb -E -i sql_test_script_pipline/test.sql
+          sqlcmd -S DESKTOP-B104Q1R\SQLEXPRESS -d testdb -E -i sqlfile/test.sql
