@@ -23,4 +23,4 @@ jobs:
     steps:
       - name: "Script run"
         run: |
-          echo "SELECT * FORM STUDENTS"|sqlcmd -S DESKTOP-B104Q1R\SQLEXPRESS -d testdb
+          echo "SELECT * FORM STUDENTS"|sqlcmd -S DESKTOP-B104Q1R\SQLEXPRESS -d testdb -i src/test.sql -b||exist1
