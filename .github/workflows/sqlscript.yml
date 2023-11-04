@@ -28,6 +28,10 @@ jobs:
       - name: Check directory
         run: |
           ls -a
+      - name: Change directory
+        run: |
+          cd ..
+          ls -a
 
       - name: "Script run"
         run: |
