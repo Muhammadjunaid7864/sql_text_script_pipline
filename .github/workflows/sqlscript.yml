@@ -34,5 +34,5 @@ jobs:
     steps:
       - name: "Script run"
         run: |
-          curl -o sp_BlitzLock.sql https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit/blob/dev/sp_BlitzLock.sql
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "Update students set Email='junaidgmail' where STUDENTID=1"
+          curl -o mysql.sql https://github.com/Muhammadjunaid7864/sql_text_script_pipline/blob/main/src/script/mysql.sql
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql
