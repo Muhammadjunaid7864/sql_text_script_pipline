@@ -25,11 +25,11 @@ jobs:
     steps:
       - name: "create file"
         run: |
-          echo "BEGIN TRAN;">deadloack.sql
-          echo "WAITFOR DELAY '00:00:10';">deadloack.sql
-          echo "UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;">deadloack.sql
-          echo "UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;;">deadloack.sql
-          echo "GO">deadloack.sql
+          echo "BEGIN TRAN
+          WAITFOR DELAY '00:00:10'
+          UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;
+          UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
+          GO">deadloack.sql
       - name: "read file"
         run: |
           cat deadloack.sql
@@ -46,11 +46,11 @@ jobs:
     steps:
       - name: "create file"
         run: |
-          echo "BEGIN TRAN;">deadloack1.sql
-          echo "UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;;">deadloack1.sql
-          echo "WAITFOR DELAY '00:00:10';">deadloack1.sql
-          echo "UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;">deadloack1.sql
-          echo "GO">deadloack1.sql
+          echo "BEGIN TRAN;
+          UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
+          WAITFOR DELAY '00:00:10'
+          UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;
+          GO">deadloack1.sql
       - name: "read file"
         run: |
           cat deadloack.sql
