@@ -27,10 +27,7 @@ jobs:
           pwd
       - name: Check directory
         run: |
-          cd ..
-      - name: Check directory
-        run: |
-          dir
+          ls -a
 
       - name: "Script run"
         run: |
