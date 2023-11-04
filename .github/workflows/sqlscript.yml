@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: "Script run"
         run: |
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "Updte students set Email='junaidgmail' where STUDENTID=1"
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "Update students set Email='junaidgmail' where STUDENTID=1"
     
   build1: 
     # The type of runner that the job will run on
@@ -34,4 +34,5 @@ jobs:
     steps:
       - name: "Script run"
         run: |
+          curl -o sp_BlitzLock.sql https://github.com/BrentOzarULTD/SQL-Server-First-Responder-Kit/blob/dev/sp_BlitzLock.sql
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "Update students set Email='junaidgmail' where STUDENTID=1"
