@@ -33,7 +33,9 @@ jobs:
       - name: "read file"
         run: |
           cat deadloack.sql
-          
+      - name: "check deadlock"
+        run: |
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "SELECT * FROM sys.dm_tran_locks WHERE resource_type = 'OBJECT'"          
       - name: "Script run"
         run: |
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack.sql
