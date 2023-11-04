@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: "Script run"
         run: |
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -Q "Update students emai='junaidgmail' where student_id=1"
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -Q "Update students email='junaidgmail' where student_id=1"
     
   build1: 
     # The type of runner that the job will run on
