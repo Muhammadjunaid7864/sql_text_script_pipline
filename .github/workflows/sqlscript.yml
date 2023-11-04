@@ -39,3 +39,4 @@ jobs:
           ls -a
     - script: |
         sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql
+        displayName: 'Execute SQL Script with sqlcmd'
