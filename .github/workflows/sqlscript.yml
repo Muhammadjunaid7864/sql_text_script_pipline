@@ -36,7 +36,7 @@ jobs:
           cd ..
           cd ..
           cd ..
-          cd usr
+          cd usr/src
           pwd
           ls -a
       - name: "Script run"
