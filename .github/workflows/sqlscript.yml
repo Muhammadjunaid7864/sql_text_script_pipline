@@ -42,4 +42,12 @@ jobs:
 
       - name: "Script run"
         run: |
+          cd ..
+          cd ..
+          pwd
+          cd ..
+          cd ..
+          cd ..
+          ls -a
+          pwd
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -i /home/runner/work/sql_text_script_pipline/src/script/mysql.sql
