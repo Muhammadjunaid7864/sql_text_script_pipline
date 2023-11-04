@@ -23,4 +23,10 @@ jobs:
     steps:
       - name: "Script run"
         run: |
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -i ".\src\script\mysql.sql"
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -Q "Update students emai='junaidgamil' where student_id=1"
+  build1:
+    need: [build]
+    steps:
+      - name: "Script run"
+        run: |
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -Q "SELECT * FROM students"
