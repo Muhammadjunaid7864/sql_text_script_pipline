@@ -23,5 +23,5 @@ jobs:
     steps:
       - name: "Script run"
         run: |
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -i my-sql
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -i my_sql.sql
       
