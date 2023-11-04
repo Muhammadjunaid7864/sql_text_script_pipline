@@ -27,7 +27,7 @@ jobs:
           pwd
       - name: Check if directory exists
         run: |
-          if [ -d "src/script" ]; then
+          if [ -d "/home/runner/work/sql_text_script_pipline/sql_text_script_pipline/src/script" ]; then
             echo "Directory 'src/script' exists."
           else
             echo "Directory 'src/script' does not exist."
