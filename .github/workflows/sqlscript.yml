@@ -32,6 +32,7 @@ jobs:
         run: |
           cd ..
           ls -a
+          pwd
       - name: Change directory
         run: |
           pwd
