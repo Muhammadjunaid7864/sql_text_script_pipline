@@ -32,11 +32,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: "dowload file"
+      - name: "create file"
         run: |
-          curl -o mysql.sql https://github.com/Muhammadjunaid7864/sql_text_script_pipline/blob/main/src/script/mysql.sql
-          pwd 
-          ls -a
-          cat mysql.sql
+          echo "SELECT * From STUDENTS">mysql.sql
+          ls-a
       - name: "Script run"
         run: sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql
