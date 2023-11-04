@@ -22,29 +22,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Current 
-        run: |
-          pwd
-      - name: Check directory
-        run: |
-          ls -a
-      - name: Change directory
-        run: |
-          cd ..
-          cd ..
-          cd ..
-          cd ..
-          cd ..
-          cd ..
-          cd usr/src
-          pwd
-          ls -a
       - name: "Script run"
         run: |
-          cd ..
-          cd ..
-          cd ..
-          cd ..
-          cd ..
-          pwd
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -i ./src/script/mysql.sql
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -i src/script/mysql.sql
