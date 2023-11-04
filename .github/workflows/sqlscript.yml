@@ -23,4 +23,4 @@ jobs:
     steps:
       - name: "Script run"
         run: |
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -i Muhammadjunaid7864/sql_text_script_pipline/src/script/mysql.sql
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -i "Muhammadjunaid7864/sql_text_script_pipline/src/script/mysql.sql"
