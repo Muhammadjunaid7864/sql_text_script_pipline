@@ -19,12 +19,19 @@ jobs:
     
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    - name: "create file"
+        run: |
+          echo "BEGIN TRAN;">deadloack.sql
+          echo "WAITFOR DELAY '00:00:10';">deadloack.sql
+          echo "UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;">deadloack.sql
+          echo "UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;;">deadloack.sql
+          echo "GO">deadloack.sql
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: "Script run"
         run: |
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "Update students set Email='junaidgmail' where STUDENTID=1"
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack.sql
     
   build1: 
     # The type of runner that the job will run on
@@ -34,7 +41,10 @@ jobs:
     steps:
       - name: "create file"
         run: |
-          echo "SELECT * From STUDENTS">mysql.sql
-          ls -a
+          echo "BEGIN TRAN;">deadloack1.sql
+          echo "UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;;">deadloack1.sql
+          echo "WAITFOR DELAY '00:00:10';">deadloack1.sql
+          echo "UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;">deadloack1.sql
+          echo "GO">deadloack1.sql
       - name: "Script run"
-        run: sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql
+        run: sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack1.sql
