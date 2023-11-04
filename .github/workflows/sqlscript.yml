@@ -31,6 +31,9 @@ jobs:
       - name: Change directory
         run: |
           ls -a ..
+      - name: Change directory
+        run: |
+          pwd
 
       - name: "Script run"
         run: |
