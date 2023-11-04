@@ -35,8 +35,9 @@ jobs:
           cd ..
           cd ..
           cd ..
+          cd ..
           pwd
-
+          ls -a
       - name: "Script run"
         run: |
           cd ..
