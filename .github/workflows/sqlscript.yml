@@ -23,13 +23,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Check if directory exists
-      run: |
-        if [ -d "src/script" ]; then
-          echo "Directory 'src/script' exists."
-        else
-          echo "Directory 'src/script' does not exist."
-          exit 1
-        fi
+        run: |
+          if [ -d "src/script" ]; then
+            echo "Directory 'src/script' exists."
+          else
+            echo "Directory 'src/script' does not exist."
+            exit 1
+          fi
       - name: "Script run"
         run: |
           cd ./src
