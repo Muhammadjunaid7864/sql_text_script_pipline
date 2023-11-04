@@ -30,7 +30,10 @@ jobs:
           ls -a
       - name: Change directory
         run: |
-          cd .
+          cd ..
+          cd ..
+          pwd
+          cd ..
           ls -a
           pwd
       - name: Change directory
