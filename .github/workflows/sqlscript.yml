@@ -30,6 +30,10 @@ jobs:
           echo "UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;">deadloack.sql
           echo "UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;;">deadloack.sql
           echo "GO">deadloack.sql
+      - name: "read file"
+        run: |
+          cat deadloack.sql
+          
       - name: "Script run"
         run: |
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack.sql
@@ -47,5 +51,8 @@ jobs:
           echo "WAITFOR DELAY '00:00:10';">deadloack1.sql
           echo "UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;">deadloack1.sql
           echo "GO">deadloack1.sql
+      - name: "read file"
+        run: |
+          cat deadloack.sql
       - name: "Script run"
         run: sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack1.sql
