@@ -48,7 +48,7 @@ jobs:
         run: |
           echo "BEGIN TRAN;
           UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
-          WAITFOR DELAY '00:00:10'
+          WAITFOR DELAY '00:00:20'
           UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;
           GO">deadloack1.sql
       - name: "read file"
