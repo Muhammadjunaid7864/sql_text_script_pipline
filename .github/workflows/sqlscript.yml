@@ -30,8 +30,7 @@ jobs:
           ls -a
       - name: Change directory
         run: |
-          cd .
-          ls -a
+          ls -a ..
 
       - name: "Script run"
         run: |
