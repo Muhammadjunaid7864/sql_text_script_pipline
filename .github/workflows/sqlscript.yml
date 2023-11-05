@@ -71,10 +71,9 @@ jobs:
     steps:
       - name: "create file"
         run: |
-          echo "BEGIN TRAN;
-          UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
-          WAITFOR DELAY '00:00:20'
+          echo "BEGIN TRAN
           UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;
+          UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
           GO">deadloack.sql
 
       - name: Check SQL Update Query
