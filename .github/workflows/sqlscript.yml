@@ -29,10 +29,10 @@ jobs:
           WAITFOR DELAY '00:00:10'
           UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;
           UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
-          GO">deadloack.sql
+          GO">deadlock.sql
       - name: "read file"
         run: |
-          cat deadloack.sql
+          cat deadlock.sql
       
       - name: "check deadlock"
         run: |
@@ -62,10 +62,10 @@ jobs:
           UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
           WAITFOR DELAY '00:00:20'
           UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;
-          GO">deadloack1.sql
+          GO">deadlock1.sql
       - name: "read file"
         run: |
-          cat deadloack1.sql
+          cat deadlock1.sql
       
       - name: "Script run"
         run: |
