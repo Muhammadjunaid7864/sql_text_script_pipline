@@ -46,7 +46,21 @@ jobs:
           if [ "$updateCount" -lt 1 ]; then
             sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock.sql
           else
-            echo "else part"
+            else
+            retry=5
+            success=false
+            while [ $retry -gt 0 ] && [ "$success" != true ]; do
+              output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql)
+              
+              # Check if the output contains a deadlock error
+              if echo "$output" | grep -q "deadlock_error"; then
+                echo "Deadlock error detected. Retrying..."
+                ((retry--))
+                sleep 10  # Adjust as needed - wait before retry
+              else
+                success=true
+              fi
+            done
           fi
   build1: 
     # The type of runner that the job will run on
@@ -74,7 +88,20 @@ jobs:
           if [ "$updateCount" -lt 1 ]; then
             sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql
           else
-            echo "else part"
+            retry=5
+            success=false
+            while [ $retry -gt 0 ] && [ "$success" != true ]; do
+              output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql)
+              
+              # Check if the output contains a deadlock error
+              if echo "$output" | grep -q "deadlock_error"; then
+                echo "Deadlock error detected. Retrying..."
+                ((retry--))
+                sleep 10  # Adjust as needed - wait before retry
+              else
+                success=true
+              fi
+            done
           fi
       - name: "check deadlock"
         run: |
@@ -100,5 +127,19 @@ jobs:
           if [ "$updateCount" -lt 1 ]; then
             sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql
           else
-            echo "else part"
+            else
+            retry=5
+            success=false
+            while [ $retry -gt 0 ] && [ "$success" != true ]; do
+              output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql)
+              
+              # Check if the output contains a deadlock error
+              if echo "$output" | grep -q "deadlock_error"; then
+                echo "Deadlock error detected. Retrying..."
+                ((retry--))
+                sleep 10  # Adjust as needed - wait before retry
+              else
+                success=true
+              fi
+            done
           fi
