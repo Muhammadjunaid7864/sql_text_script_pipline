@@ -56,7 +56,13 @@ jobs:
       - name: "read file"
         run: |
           cat deadloack1.sql
-      
+      - name: Check SQL Update Query
+        run: |
+          $updateCount = sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -Q "SELECT COUNT(*) FROM sys.dm_exec_requests WHERE command = 'UPDATE';"
+          
+          if ($updateCount -gt 1) {
+            sleep 5
+          }
       - name: "Script run"
         run: |
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack1.sql
