@@ -69,6 +69,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+     - name: "create file"
+        run: |
+          echo "BEGIN TRAN;
+          UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
+          WAITFOR DELAY '00:00:20'
+          UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;
+          GO">deadloack.sql
       - name: Check SQL Update Query
         run: |
           endTime=$((SECONDS+300))  # Calculate the end time 5 minutes from now
