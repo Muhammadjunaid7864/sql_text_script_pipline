@@ -49,7 +49,7 @@ jobs:
           retry=5
           success=false
           while [ $retry -gt 0 ] && [ "$success" != true ]; do
-            output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql)
+            output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock.sql)
             
             # Check if the output contains a deadlock error
             if echo "$output" | grep -q "deadlock_error"; then
@@ -129,7 +129,7 @@ jobs:
           retry=5
           success=false
           while [ $retry -gt 0 ] && [ "$success" != true ]; do
-            output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql)
+            output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql)
             
             # Check if the output contains a deadlock error
             if echo "$output" | grep -q "deadlock_error"; then
