@@ -46,7 +46,6 @@ jobs:
           if [ "$updateCount" -lt 1 ]; then
             sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock.sql
           else
-            else
             retry=5
             success=false
             while [ $retry -gt 0 ] && [ "$success" != true ]; do
@@ -127,7 +126,6 @@ jobs:
           if [ "$updateCount" -lt 1 ]; then
             sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql
           else
-            else
             retry=5
             success=false
             while [ $retry -gt 0 ] && [ "$success" != true ]; do
