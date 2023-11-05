@@ -45,6 +45,8 @@ jobs:
           echo "$updateCount"
           if [ "$updateCount" -lt 1 ]; then
             sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock.sql
+          else
+            echo "else part"
   build1: 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -70,7 +72,8 @@ jobs:
           echo "$updateCount"
           if [ "$updateCount" -lt 1 ]; then
             sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql
-        
+          else
+            echo "else part"
       - name: "check deadlock"
         run: |
 
@@ -94,3 +97,5 @@ jobs:
           echo "$updateCount"
           if [ "$updateCount" -lt 1 ]; then
             sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql
+          else
+            echo "else part"
