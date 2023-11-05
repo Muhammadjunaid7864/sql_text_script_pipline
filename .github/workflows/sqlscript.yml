@@ -43,10 +43,9 @@ jobs:
           success=false
           while [ $retry -gt 0 ] && [ "$success" != true ]; do
             output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock.sql)
-            deaderror=$(echo "$output" | awk '/deadlock victim/')
-            echo "$deaderror"
+            echo "$output"
             # Check if the output contains a deadlock error
-            if ["$deaderror" -eq 'deadlock victim'] ; then
+            if echo "$output" | awk '/deadlock victim/'; then
               echo "Deadlock error detected. Retrying..."
               ((retry--))
               sleep 10  # Adjust as needed - wait before retry
@@ -77,10 +76,9 @@ jobs:
           success=false
           while [ $retry -gt 0 ] && [ "$success" != true ]; do
             output=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql)
-            deaderror=$(echo "$output" | awk '/deadlock victim/')
-            echo "$deaderror"
+            echo "$output"
             # Check if the output contains a deadlock error
-            if ["$deaderror" -eq 'deadlock victim'] ; then
+            if echo "$output" | awk '/deadlock victim/'; then
               echo "Deadlock error detected. Retrying..."
               ((retry--))
               sleep 10  # Adjust as needed - wait before retry
@@ -112,7 +110,7 @@ jobs:
             deaderror=$(echo "$output" | awk '/deadlock victim/')
             echo "$deaderror"
             # Check if the output contains a deadlock error
-            if ["$deaderror" -eq 'deadlock victim'] ; then
+            if echo "$output" | awk '/deadlock victim/'; then
               echo "Deadlock error detected. Retrying..."
               ((retry--))
               sleep 10  # Adjust as needed - wait before retry
