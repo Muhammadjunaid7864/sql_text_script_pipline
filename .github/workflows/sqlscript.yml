@@ -39,8 +39,17 @@ jobs:
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "SELECT * FROM sys.dm_tran_locks WHERE resource_type = 'OBJECT'"          
       - name: "Script run"
         run: |
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack.sql
-    
+          endTime=$((SECONDS+300))  # Calculate the end time 5 minutes from now
+          while [ $SECONDS -lt $endTime ]; do
+            query_result=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -Q "SET NOCOUNT ON; SELECT COUNT(*) AS updateCount FROM sys.dm_exec_requests WHERE command = 'UPDATE';")
+            updateCount=$(echo "$query_result" | awk '/[0-9]+/ {print $1}')
+            echo "$query_result"
+            echo "$updateCount"
+            if [ "$updateCount" -lt 1 ]; then
+              sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock.sql
+            fi
+            sleep 1
+          done
   build1: 
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -60,7 +69,17 @@ jobs:
       
       - name: "Script run"
         run: |
-          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack1.sql
+          endTime=$((SECONDS+300))  # Calculate the end time 5 minutes from now
+          while [ $SECONDS -lt $endTime ]; do
+            query_result=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -Q "SET NOCOUNT ON; SELECT COUNT(*) AS updateCount FROM sys.dm_exec_requests WHERE command = 'UPDATE';")
+            updateCount=$(echo "$query_result" | awk '/[0-9]+/ {print $1}')
+            echo "$query_result"
+            echo "$updateCount"
+            if [ "$updateCount" -lt 1 ]; then
+              sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadlock1.sql
+            fi
+            sleep 1
+          done
       - name: "check deadlock"
         run: |
 
@@ -78,7 +97,6 @@ jobs:
 
       - name: Check SQL Update Query
         run: |
-          sleep 5
           endTime=$((SECONDS+300))  # Calculate the end time 5 minutes from now
           while [ $SECONDS -lt $endTime ]; do
             query_result=$(sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -Q "SET NOCOUNT ON; SELECT COUNT(*) AS updateCount FROM sys.dm_exec_requests WHERE command = 'UPDATE';")
