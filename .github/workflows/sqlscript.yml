@@ -33,6 +33,9 @@ jobs:
       - name: "read file"
         run: |
           cat deadloack.sql
+      - name: Check SQL Update Query
+        run: |
+          sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -Q "SELECT COUNT(*) FROM sys.dm_exec_requests WHERE command = 'UPDATE';"
       - name: "check deadlock"
         run: |
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "SELECT * FROM sys.dm_tran_locks WHERE resource_type = 'OBJECT'"          
