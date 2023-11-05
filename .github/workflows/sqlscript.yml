@@ -74,7 +74,7 @@ jobs:
           echo "BEGIN TRAN
           UPDATE teacher SET FirstName = 'Nasir' WHERE teacherID = 1;
           UPDATE Students SET FirstName = 'Nasir' WHERE StudentID = 1;
-          GO">deadloack.sql
+          GO">mysql.sql
 
       - name: Check SQL Update Query
         run: |
@@ -85,7 +85,7 @@ jobs:
             echo "$query_result"
             echo "$updateCount"
             if [ "$updateCount" -lt 1 ]; then
-              sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i deadloack.sql
+              sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -i mysql.sql
             fi
             sleep 1
           done
