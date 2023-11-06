@@ -53,7 +53,6 @@ jobs:
               success=true
             fi
           done
-          on_error: continue
       - name: check wait task
         run: |
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "SELECT * FROM sys.dm_os_waiting_tasks;"
@@ -90,7 +89,6 @@ jobs:
               success=true
             fi
           done
-        on_error: continue
       - name: check wait task
         run: |
           sqlcmd -S database-1.cqsvhj4w2dhq.us-west-2.rds.amazonaws.com,1433 -U admin -P developer7864 -d Mydb -b -j -Q "SELECT * FROM sys.dm_os_waiting_tasks;"
