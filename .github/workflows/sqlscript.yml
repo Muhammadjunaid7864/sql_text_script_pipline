@@ -23,6 +23,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
+      - name: Get commit SHA
+        run: echo "Commit SHA is ${{ github.sha }}"
+        
       - name: "create file"
         run: |
           echo "BEGIN TRAN
@@ -72,7 +76,6 @@ jobs:
       - name: "read file"
         run: |
           cat deadlock1.sql
-      
       - name: "Script run"
         run: |
           retry=5
